@@ -1,2 +1,2 @@
 # MarketPlace-FrontEnd
-CocoMarket FrontEnd Market Place
+CocoMarket FrontEnd (Angular) Market Place
