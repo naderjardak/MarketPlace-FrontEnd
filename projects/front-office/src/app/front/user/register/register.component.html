@@ -1,0 +1,564 @@
+
+
+<!--====== Google Font ======-->
+<link
+  href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800"
+  rel="stylesheet"
+/>
+
+
+<!--====== Vendor Css ======-->
+<link
+  rel="stylesheet"
+  href="../../../../assets/front-template/css/vendor.css"
+/>
+
+<!--====== Utility-Spacing ======-->
+<link
+  rel="stylesheet"
+  href="../../../../assets/front-template/css/utility.css"
+/>
+
+<!--====== App ======-->
+<link rel="stylesheet" href="../../../../assets/front-template/css/app.css" />
+
+<body class="config">
+  <!--====== Main App ======-->
+  <div id="app">
+    <!--====== Main Header ======-->
+    <app-header></app-header>
+    <!--====== End - Main Header ======-->
+
+    <!--====== App Content ======-->
+    <div class="app-content">
+      <!--====== Section 1 ======-->
+      <div class="u-s-p-y-60">
+        <!--====== Section Content ======-->
+        <div class="section__content">
+          <div class="container">
+            <div class="breadcrumb">
+              <div class="breadcrumb__wrap">
+                <ul class="breadcrumb__list">
+                  <li class="has-separator">
+                    <a href="index.html">Home</a>
+                  </li>
+                  <li class="is-marked">
+                    <a href="signup.html">Signup</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--====== End - Section 1 ======-->
+
+      <!--====== Section 2 ======-->
+      <div class="u-s-p-b-60">
+        <!--====== Section Intro ======-->
+        <div class="section__intro u-s-m-b-60">
+          <div class="container">
+            <div class="row">
+              <div class="col-lg-12">
+                <div class="section__text-wrap">
+                  <h1 class="section__heading u-c-secondary" >
+                    CREATE AN ACCOUNT AS A  {{ROLE | uppercase}}
+                  </h1>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--====== End - Section Intro ======-->
+
+        <!--====== Section Content ======-->
+        <div class="section__content">
+          <div class="container">
+            <div class="row row--center">
+              <div class="col-lg-6 col-md-8 u-s-m-b-30">
+                <div class="l-f-o">
+                  <div class="l-f-o__pad-box">
+                    <h1 class="gl-h1">PERSONAL INFORMATION</h1>
+
+                    <form class="l-f-o__form" name="form"(ngSubmit)="Create()" #f="ngForm">
+                      <div class="gl-s-api">
+                        <div class="u-s-m-b-15">
+                          <button
+                            class="gl-s-api__btn gl-s-api__btn--fb"
+                            type="button"
+                          >
+                            <i class="fab fa-facebook-f"></i>
+
+                            <span>Signup with Facebook</span>
+                          </button>
+                        </div>
+                        <div class="u-s-m-b-30">
+                          <button
+                            class="gl-s-api__btn gl-s-api__btn--gplus"
+                            type="button"
+                          >
+                            <i class="fab fa-google"></i>
+
+                            <span>Signup with Google</span>
+                          </button>
+                        </div>
+                      </div>
+
+                      <div class="u-s-m-b-30">
+                        <label class="gl-label" for="photo"
+                          >PROFILE PICTURE *</label
+                        >
+                        <input type="file"  accept=".png" id="photo" name="photo" [(ngModel)]="user.image"  />
+                      </div>
+
+                      <div class="u-s-m-b-30">
+                        <label class="gl-label" id="espace" for="reg-fname"
+                          >FIRST NAME *</label
+                        >
+
+                        <input
+                          class="input-text input-text--primary-style"
+                          type="text"
+                          id="reg-fname"
+                          placeholder="First Name"   name="firstName"  [(ngModel)]="user.firstName"
+                        />
+                      </div>
+                      <div class="u-s-m-b-30">
+                        <label class="gl-label" for="reg-lname"
+                          >LAST NAME *</label
+                        >
+
+                        <input
+                          class="input-text input-text--primary-style"
+                          type="text"
+                          id="reg-lname"
+                          placeholder="Last Name" name="lastName"  [(ngModel)]="user.lastName"
+                        />
+                      </div>
+
+                        <div class="u-s-m-b-30">
+                          <!--====== Date of Birth Select-Box ======-->
+
+                          <span class="gl-label">BIRTHDAY *</span>
+
+
+                          <input type="date" id="start" name="trip-start"
+
+                                 min="1991-01-01" max="2005-12-31"  [(ngModel)]="user.BirthDate" >
+
+                          <!--====== End - Date of Birth Select-Box ======-->
+
+
+                        <div class="u-s-m-b-30">
+                          <label class="gl-label" for="gender">GENDER</label
+                          ><select
+                            class="select-box select-box--primary-style u-w-100"
+                            id="gender" name="gender"  [(ngModel)]="user.genderType"
+                          >
+
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                            <option value="Other">Other</option>
+                          </select>
+                        </div>
+                      </div>
+
+                      <div class="u-s-m-b-30">
+                        <label class="gl-label" for="phone"
+                          >PHONE-NUMBER *</label
+                        >
+
+                        <input
+                          class="input-text input-text--primary-style"
+                          type="tel"
+                          id="phone"
+                          name="phone"
+                          pattern="[0-9]{2}-[0-9]{3}-[0-9]{3}"
+                          placeholder="Enter phone-Number"  [(ngModel)]="user.phoneNumber"
+                          required
+                        />
+
+                        <div class="u-s-m-b-30">
+                          <label class="gl-label" id="espace" for="reg-Iname"
+                            >IDENTITY *</label
+                          >
+
+                          <input
+                            class="input-text input-text--primary-style"
+                            type="text"
+                            id="reg-Iname"
+                            placeholder="identity" name="identity"  [(ngModel)]="user.identity"
+                          />
+                        </div>
+
+                        <div class="u-s-m-b-30">
+                          <label class="gl-label" id="espace" for="reg-bname" *ngIf="ROLE == 'Seller' || ROLE==='Delivery Agency' || ROLE==='Supplier'"
+                            >BRAND NAME *</label
+                          >
+
+                          <input
+                            class="input-text input-text--primary-style"
+                            type="text"
+                            id="reg-bname"
+                            placeholder="BrandName" *ngIf="ROLE == 'Seller'|| ROLE==='Delivery Agency' || ROLE==='Supplier'"  name="brandName"  [(ngModel)]="user.brandName"
+                          />
+                        </div>
+
+                        <div class="u-s-m-b-30">
+                          <label class="gl-label" id="espace" for="reg-bLname" *ngIf="ROLE == 'Seller'|| ROLE==='Delivery Agency' || ROLE==='Supplier'"
+                            >BRAND LOGO *</label
+                          >
+
+                          <input
+
+                            type="file"
+                            accept=".png"
+                            id="reg-bLname"
+                            placeholder="BrandLogo" *ngIf="ROLE == 'Seller'|| ROLE==='Delivery Agency' || ROLE==='Supplier'"  name="brandlogo"  [(ngModel)]="user.brandLogo"
+                          />
+                        </div>
+
+                        <div class="u-s-m-b-30">
+
+                          <label class="gl-label" id="espace" for="reg-Jname" *ngIf="ROLE === 'Seller' || ROLE === 'Delivery' || ROLE==='Delivery Agency' || ROLE==='Supplier'"
+                            >JUSTIFICATION *(Place Your Document)</label
+                          >
+
+                          <input
+
+                            type="file"
+                            accept=".pdf"
+                            id="reg-Jname"
+                            placeholder="Justification"  name="Justification"  [(ngModel)]="user.justification"  *ngIf="ROLE === 'Seller' || ROLE === 'Delivery' || ROLE==='Delivery Agency' || ROLE==='Supplier'"
+                          />
+                        </div>
+
+                        <div class="u-s-m-b-30">
+                          <label  class="gl-label" for="gear"*ngIf="ROLE == 'Delivery'">GEAR *</label>
+                          <select
+                          class="select-box select-box--primary-style u-w-100"
+
+                          id="reg-Gname"
+                           *ngIf="ROLE == 'Delivery'" name="gear"  [(ngModel)]="user.gear"
+                        >
+
+                          <option value="CAR">CAR</option>
+                          <option value="MOTO">MOTO</option>
+                          <option value="TRUCK">TRUCK</option>
+                          <option value="BIKE">BIKE</option>
+                        </select>
+                          </div>
+
+
+
+
+
+                        <div class="u-s-m-b-30">
+                          <label class="gl-label" id="espace" for="reg-Dname" *ngIf="ROLE == 'Delivery'"
+                            >DRIVER LICENSE *</label>
+
+                          <input
+                            class="input-text input-text--primary-style"
+                            type="text"
+                            id="reg-Dname"
+                            placeholder="DriverLicense" *ngIf="ROLE == 'Delivery'" name="DriverLicense"  [(ngModel)]="user.driveLicense"
+                          />
+                        </div>
+                        <div class="u-s-m-b-30">
+                          <label class="gl-label" id="espace" for="reg-Gname" *ngIf="ROLE == 'Delivery'"
+                            >GEAR AGE *</label
+                          >
+
+                          <input
+                            class="input-text input-text--primary-style"
+                            type="text"
+                            id="reg-Gname"
+                            placeholder="GearAge" *ngIf="ROLE == 'Delivery'" name="GearAge"  [(ngModel)]="user.GearAge"
+                          />
+                        </div>
+
+                        <div class="u-s-m-b-30">
+                        <label class="gl-label">GOVERNORATE *</label>
+
+                          <select class="select-box select-box--primary-style u-w-100" id="governorate" name="governorate" [(ngModel)]="selectedGovernorate"  [(ngModel)]="shipping.governorate"(ngModelChange)="updateCities()">
+                            <option *ngFor="let gov of governorates" [value]="gov.name">{{ gov.name }}</option>
+                          </select>
+                        </div>
+
+                        <div class="u-s-m-b-30">
+                            <label class="gl-label">CITY *</label>
+
+                            <select  class="select-box select-box--primary-style u-w-100" id="city" name="city" [(ngModel)]="shipping.city">
+                            <option>{{ shipping.city }}</option>
+                            <option *ngFor="let city of cities" [value]="city">{{ city }}</option>
+                            </select>
+
+                        </div>
+                        <label class="gl-label" for="reg-email">E-MAIL *</label>
+
+                        <input
+                          class="input-text input-text--primary-style"
+                          type="text"
+                          id="reg-email"
+                          placeholder="Enter E-mail" name="email"  [(ngModel)]="user.email"
+                        />
+                      </div>
+                      <div class="u-s-m-b-30">
+                        <label class="gl-label" for="reg-password"
+                          >PASSWORD *</label
+                        >
+
+                        <input
+                          class="input-text input-text--primary-style"
+                          type="password"
+                          id="psw" name="psw"
+                          placeholder="Enter Password"  pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required  [(ngModel)]="user.password"
+                        />
+                      </div>
+
+
+
+                      <div id="message">
+                        <h3>Password must contain the following:</h3>
+                        <p id="letter" class="invalid">A <b>lowercase</b> letter</p>
+                        <p id="capital" class="invalid">A <b>capital (uppercase)</b> letter</p>
+                        <p id="number" class="invalid">A <b>number</b></p>
+                        <p id="length" class="invalid">Minimum <b>8 characters</b></p>
+                      </div>
+
+
+
+
+                      <div class="u-s-m-b-15">
+                        <button
+                          class="btn btn--e-transparent-brand-b-2"
+                          type="submit">
+
+                          CREATE
+                        </button>
+                      </div>
+
+                      <a class="gl-link" href="#">Return to Store</a>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--====== End - Section Content ======-->
+      </div>
+      <!--====== End - Section 2 ======-->
+    </div>
+    <!--====== End - App Content ======-->
+
+    <!--====== Main Footer ======-->
+    <footer>
+      <div class="outer-footer">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-4 col-md-6">
+              <div class="outer-footer__content u-s-m-b-40">
+
+                <span class="outer-footer__content-title">Contact Us</span>
+                <div class="outer-footer__text-wrap"><i class="fas fa-home"></i>
+
+                  <span>4247 Ashford Drive Virginia VA-20006 USA</span></div>
+                <div class="outer-footer__text-wrap"><i class="fas fa-phone-volume"></i>
+
+                  <span>(+0) 900 901 904</span></div>
+                <div class="outer-footer__text-wrap"><i class="far fa-envelope"></i>
+
+                  <span>contact@domain.com</span></div>
+                <div class="outer-footer__social">
+                  <ul>
+                    <li>
+
+                      <a class="s-fb--color-hover" href="#"><i class="fab fa-facebook-f"></i></a></li>
+                    <li>
+
+                      <a class="s-tw--color-hover" href="#"><i class="fab fa-twitter"></i></a></li>
+                    <li>
+
+                      <a class="s-youtube--color-hover" href="#"><i class="fab fa-youtube"></i></a></li>
+                    <li>
+
+                      <a class="s-insta--color-hover" href="#"><i class="fab fa-instagram"></i></a></li>
+                    <li>
+
+                      <a class="s-gplus--color-hover" href="#"><i class="fab fa-google-plus-g"></i></a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+              <div class="row">
+                <div class="col-lg-6 col-md-6">
+                  <div class="outer-footer__content u-s-m-b-40">
+
+                    <span class="outer-footer__content-title">Information</span>
+                    <div class="outer-footer__list-wrap">
+                      <ul>
+                        <li>
+
+                          <a href="cart.component.html">Cart</a></li>
+                        <li>
+
+                          <a href="../../../../assets/front-template/dashboard.html">Account</a></li>
+                        <li>
+
+                          <a href="../../../../assets/front-template/shop-side-version-2.html">Manufacturer</a></li>
+                        <li>
+
+                          <a href="../../../../assets/front-template/dash-payment-option.html">Finance</a></li>
+                        <li>
+
+                          <a href="../../../../assets/front-template/shop-side-version-2.html">Shop</a></li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-6 col-md-6">
+                  <div class="outer-footer__content u-s-m-b-40">
+                    <div class="outer-footer__list-wrap">
+
+                      <span class="outer-footer__content-title">Registration</span>
+                      <ul>
+
+                        <li>
+
+                          <button (click)="setRoleTo('Supplier')" >Supplier</button></li>
+                        <li>
+
+                          <button (click)="setRoleTo('Delivery Agency')" >Delivery Agency</button></li>
+                        <li>
+
+                          <button (click)="setRoleTo('Delivery')">DeliveryFreelancer</button></li>
+                        <li>
+
+                          <button (click)="setRoleTo('Seller')" >Seller</button></li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-12">
+              <div class="outer-footer__content">
+
+                <span class="outer-footer__content-title">Join our Newsletter</span>
+                <form class="newsletter">
+                  <div class="u-s-m-b-15">
+                    <div class="radio-box newsletter__radio">
+
+                      <input type="radio" id="male" name="gender">
+                      <div class="radio-box__state radio-box__state--primary">
+
+                        <label class="radio-box__label" for="male">Male</label></div>
+                    </div>
+                    <div class="radio-box newsletter__radio">
+
+                      <input type="radio" id="female" name="gender">
+                      <div class="radio-box__state radio-box__state--primary">
+
+                        <label class="radio-box__label" for="female">Female</label></div>
+                    </div>
+                  </div>
+                  <div class="newsletter__group">
+
+                    <label for="newsletter"></label>
+
+                    <input class="input-text input-text--only-white" type="text" id="newsletter" placeholder="Enter your Email">
+
+                    <button class="btn btn--e-brand newsletter__btn" type="submit">SUBSCRIBE</button></div>
+
+                  <span class="newsletter__text">Subscribe to the mailing list to receive updates on promotions, new arrivals, discount and coupons.</span>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="lower-footer">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="lower-footer__content">
+                <div class="lower-footer__copyright">
+
+                  <span>Copyright © 2018</span>
+
+                  <a href="../../../../index.html">Reshop</a>
+
+                  <span>All Right Reserved</span></div>
+                <div class="lower-footer__payment">
+                  <ul>
+                    <li><i class="fab fa-cc-stripe"></i></li>
+                    <li><i class="fab fa-cc-paypal"></i></li>
+                    <li><i class="fab fa-cc-mastercard"></i></li>
+                    <li><i class="fab fa-cc-visa"></i></li>
+                    <li><i class="fab fa-cc-discover"></i></li>
+                    <li><i class="fab fa-cc-amex"></i></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+  </div>
+
+  <!--====== End - Main App ======-->
+
+  <!--====== Google Analytics: change UA-XXXXX-Y to be your site's ID ======-->
+  <script>
+    window.ga = function () {
+      ga.q.push(arguments);
+    };
+    ga.q = [];
+    ga.l = +new Date();
+    ga("create", "UA-XXXXX-Y", "auto");
+    ga("send", "pageview");
+  </script>
+  <script
+    src="https://www.google-analytics.com/analytics.js"
+    async
+    defer
+  ></script>
+
+  <!--====== Vendor Js ======-->
+  <script src="js/vendor.js"></script>
+
+  <!--====== jQuery Shopnav plugin ======-->
+  <script src="js/jquery.shopnav.js"></script>
+
+  <!--====== App ======-->
+  <script src="js/app.js"></script>
+
+  <!--====== Noscript ======-->
+  <noscript>
+    <div class="app-setting">
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="app-setting__wrap">
+              <h1 class="app-setting__h1">
+                JavaScript is disabled in your browser.
+              </h1>
+
+              <span class="app-setting__text"
+                >Please enable JavaScript in your browser or upgrade to a
+                JavaScript-capable browser.</span
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </noscript>
+
+
+
+</body>

@@ -1,0 +1,5 @@
+export enum ClaimSavType {
+  TECHNICAL_REPORT='TECHNICAL_REPORT',
+  SAV='SAV',
+  OTHER='OTHER'
+}

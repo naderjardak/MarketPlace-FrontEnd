@@ -1,0 +1,68 @@
+
+  <div class="pd-ltr-20 xs-pd-20-10">
+    <div class="min-height-200px">
+
+        <div class="page-header">
+          <div class="row">
+            <div class="col-md-12 col-sm-12">
+              <div class="title">
+                <h4>Stores</h4>
+              </div>
+              <nav aria-label="breadcrumb" role="navigation">
+                <ol class="breadcrumb">
+                  <li class="breadcrumb-item">
+                    <a href="index.html">Home</a>
+                  </li>
+                  <li class="breadcrumb-item active" aria-current="page">
+                    Stores
+                  </li>
+                </ol>
+              </nav>
+            </div>
+          </div>
+        </div>
+        <div class="contact-directory-list">
+          <ul class="row">
+            <li class="col-xl-3 col-lg-4 col-md-6 col-sm-12" *ngFor="let s of store; let i = index">
+              <div class="contact-directory-box">
+                <div class="contact-dire-info text-center">
+                  <div class="contact-avatar">
+                    <span>
+                      <img src="vendors/images/photo2.jpg" alt="" />
+                    </span>
+                  </div>
+                  <div class="contact-name">
+                    <h4>{{s.name}}</h4>
+                    <p>UI/UX designer</p>
+                    <div class="work text-success">
+                      <i class="ion-android-person"></i> {{user.firstName}} {{user.lastName}}
+                    </div>
+                  </div>
+                  <div class="contact-skill">
+                    <span class="badge badge-pill">{{s.city}}</span>
+                    <span class="badge badge-pill">{{s.governorate}}</span>
+                    <span class="badge badge-pill badge-danger" >{{nbOrder[i]}}+</span>
+                  </div>
+                  <div class="profile-sort-desc">
+                    Check your orders and select the one you want to pick up.
+                  </div>
+                </div>
+                <div class="view-contact">
+                  <a [routerLink]="['/Seller/stores/orders/',s.id]">View Orders</a>
+                </div>
+              </div>
+            </li>
+
+          </ul>
+        </div>
+
+    </div>
+    <div class="footer-wrap pd-20 mb-20 card-box">
+      DeskApp - Bootstrap 4 Admin Template By
+      <a href="https://github.com/dropways" target="_blank"
+        >Ankit Hingarajiya</a
+      >
+    </div>
+  </div>
+
+

@@ -1,0 +1,104 @@
+<div class="card">
+    <form #form="ngForm" (ngSubmit)="add(form)">
+        <div class="grid p-fluid mt-3">
+            <div class="field col-12 md:col-4">
+                <span class="p-float-label">
+                    <input name="Pname" type="text" id="inputtext" pInputText [(ngModel)]="value2">
+                    <label for="inputtext"> Name</label>
+                </span>
+            </div>
+            <div class="field col-12 md:col-4">
+                <span class="p-float-label">
+                    <p-autoComplete inputId="autocomplete" [(ngModel)]="selectedCategoryAdvanced"
+                        [suggestions]="filteredCategories" (completeMethod)="filterCategories($event)"
+                        field="name" name="selectedCategoryAdvanced"></p-autoComplete>
+                    <label for="autocomplete">Category</label>
+                </span>
+            </div>
+            <div class="field col-12 md:col-4">
+                <span class="p-float-label">
+                    <p-autoComplete inputId="autocomplete1" [(ngModel)]="selectedSubAdvanced"
+                        [suggestions]="filteredSubCategories" (completeMethod)="filterSubCategories($event)" name="selectedSubAdvanced"
+                        ></p-autoComplete>
+                    <label for="autocomplete1">SubCategory</label>
+                </span>
+            </div>
+
+        </div>
+
+        <div class="grid p-fluid mt-3">
+            <div class="field col-12 md:col-4">
+                <div class="p-inputgroup">
+                    <span class="p-inputgroup-addon">
+                        <i>TND</i>
+                    </span>
+                    <span class="p-float-label ">
+                        <input type="text" id="righticon1" name="price" pInputText [(ngModel)]="value8">
+                        <label for="righticon1">Price</label>
+                    </span>
+                </div>
+            </div>
+
+
+            <div class="field col-12 md:col-4">
+                <div class="p-inputgroup">
+                    <span class="p-inputgroup-addon">
+                        <i>Kg</i>
+                    </span>
+                    <span class="p-float-label ">
+                        <input type="text" id="righticon2" pInputText name="Weight" [(ngModel)]="value4">
+                        <label for="righticon2">Weight</label>
+
+                    </span>
+                </div>
+            </div>
+            <div class="field col-12 md:col-4">
+                <span class="p-float-label ">
+                    <input type="number" id="righticon" name="quantity" pInputText [(ngModel)]="value3">
+                    <label for="righticon">Available Quantity</label>
+                </span>
+            </div>
+
+        </div>
+        <div class="grid p-fluid mt-3">
+            <div class="field col-12 md:col-4">
+                <span class="p-float-label">
+                    <p-multiSelect inputId="multiselect" name="myMultiSelect" [options]="storeNames" [(ngModel)]="value11" optionLabel="name"
+                        [filter]="false"></p-multiSelect>
+                    <label for="multiselect">Stores</label>
+                </span>
+            </div>
+            <div class="field col-12 md:col-4">
+                <span class="p-float-label">
+                    <textarea inputId="textarea" rows="2" cols="29" [(ngModel)]="value12" name="desc"
+                        pInputTextarea></textarea>
+                    <label for="textarea">Description</label>
+                </span>
+            </div>
+            <div class="field col-12 md:col-4">
+                <span class="p-float-label">
+                    <textarea inputId="textarea2" name="addDeliv" rows="2" cols="29" [(ngModel)]="value10"
+                        pInputTextarea></textarea>
+                    <label for="textarea2">Additionnal delivery informations</label>
+                </span>
+            </div>
+            <div>
+                <p-fileUpload name="demo[]" url="http://localhost/save.php" (onUpload)="onUpload($event)"
+                    [multiple]="true" accept="image/*" [maxFileSize]="1000000" method="post">
+                    <ng-template pTemplate="content">
+                        <ul *ngIf="uploadedFiles.length">
+                            <li *ngFor="let file of uploadedFiles">{{file.name}} - {{file.size}} bytes</li>
+                        </ul>
+                    </ng-template>
+                </p-fileUpload>
+                <p-toast></p-toast>
+
+            </div>
+        </div>
+    
+
+        <button pButton pRipple label="Submit" icon="pi pi-bookmark" iconPos="right"></button>
+
+
+    </form>
+</div>

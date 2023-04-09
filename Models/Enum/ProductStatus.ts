@@ -1,0 +1,3 @@
+export enum ProductStatus{
+  PENDING='PENDING', ACCEPTED='ACCEPTED', REJECTED='REJECTED'
+}

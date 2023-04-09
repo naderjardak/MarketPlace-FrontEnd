@@ -1,0 +1,115 @@
+
+
+<div class="pd-ltr-20 xs-pd-20-10">
+  <div class="min-height-200px">
+    <div class="page-header">
+      <div class="row">
+        <div class="col-md-6 col-sm-12">
+          <div class="title">
+            <h4>Pickups</h4>
+          </div>
+          <nav aria-label="breadcrumb" role="navigation">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item " aria-current="page">
+                Pickups
+              </li>
+              <li class="breadcrumb-item active" aria-current="page">
+                New Pickup
+              </li>
+            </ol>
+          </nav>
+        </div>
+      </div>
+    </div>
+    	<!-- Simple Datatable start -->
+      <div class="card-box mb-30">
+        <div class="pd-20">
+          <h4 class="text-blue h4">Pickups List</h4>
+        </div>
+        <div class="pb-20">
+          <table class="data-table table stripe hover nowrap">
+            <thead>
+              <tr>
+                <th class="table-plus datatable-nosort">#Traking Id</th>
+                <th>Sum</th>
+                <th>Governorate - City</th>
+                <th>Nb Requests</th>
+                <th>Creation Date</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let p of pickup">
+                <td class="table-plus">{{p.codePickup}}</td>
+                <td>{{p.sum}}</td>
+                <td>{{p.governorate}}-{{p.city}}</td>
+                <td>{{p.nbRequest}}</td>
+                <td>{{p.dateCreationPickup}}</td>
+                <td>
+                  <a
+                    href="#"
+                    class="btn-block"
+                    data-toggle="modal"
+                    data-target="#confirmation-modal"
+                    type="button"
+                  ><button type="button" class="btn btn-primary"  [(ngModel)]="idPickup"  (click)="selectPickup(p.id)">Apply</button>
+                  </a>
+                  <div
+                    class="modal fade"
+                    id="confirmation-modal"
+                    tabindex="-1"
+                    role="dialog"
+                    aria-hidden="true"
+                  >
+                    <div
+                      class="modal-dialog modal-dialog-centered"
+                      role="document"
+                    >
+                      <div class="modal-content">
+                        <div class="modal-body text-center font-18">
+                          <h4 class="padding-top-30 mb-30 weight-500">
+                            Are you sure you want to continue?
+                          </h4>
+                          <form #addform="ngForm" (ngSubmit)="addForm(addform)" >
+                            <br>
+                            <div
+                            class="padding-bottom-30 row"
+                            style="max-width: 170px; margin: 0 auto"
+                          >
+                            <div class="col-6">
+                              <button
+                                type="button"
+                                class="btn btn-secondary border-radius-100 btn-block confirmation-btn"
+                                data-dismiss="modal"
+                              >
+                                <i class="fa fa-times"></i>
+                              </button>
+                              NO
+                            </div>
+                            <div class="col-6">
+                              <button
+                                type="submit"
+                                class="btn btn-primary border-radius-100 btn-block confirmation-btn"
+                              >
+                                <i class="fa fa-check"></i>
+                              </button>
+                              Add
+                            </div>
+                          </div>
+
+                            </form>
+
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                			</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <script src="../../../assets/vendors/scripts/core.js"></script>
+      <script src="../../../assets/vendors/scripts/script.min.js"></script>
+      <script src="../../../assets/vendors/scripts/process.js"></script>
+      <script src="../../../assets/vendors/scripts/layout-settings.js"></script>

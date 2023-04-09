@@ -1,0 +1,65 @@
+
+
+<div class="pd-ltr-20 xs-pd-20-10">
+  <div class="min-height-200px">
+    <div class="page-header">
+      <div class="row">
+        <div class="col-md-6 col-sm-12">
+          <div class="title">
+            <h4>Pickups</h4>
+          </div>
+          <nav aria-label="breadcrumb" role="navigation">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item " aria-current="page">
+                Pickups
+              </li>
+              <li class="breadcrumb-item active" aria-current="page">
+                New Pickup
+              </li>
+            </ol>
+          </nav>
+        </div>
+      </div>
+    </div>
+    	<!-- Simple Datatable start -->
+      <div class="card-box mb-30">
+        <div class="pd-20">
+          <h4 class="text-blue h4">Pickups List</h4>
+        </div>
+        <div class="pb-25">
+          <table class="data-table table stripe hover nowrap">
+            <thead>
+              <tr>
+                <th class="table-plus datatable-nosort">#Traking Id</th>
+                <th>Sum</th>
+                <th>Creation Date</th>
+                <th>Name of store</th>
+                <th>The founder of store </th>
+                <th>Phone number of Store </th>
+                <th>Address of store</th>
+                <th>Shipping To</th>
+                <th>Buyer Name - PN</th>
+                <th>Track P</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let r of request">
+                <td class="table-plus">{{r.pickup.codePickup}}</td>
+                <td>{{r.pickup.sum}}</td>
+                <td>{{r.pickup.dateCreationPickup}}</td>
+                <td>{{r.pickup.store.name}}</td>
+                <td>{{r.pickup.store.seller.firstName}} {{r.pickup.store.seller.lastName}}</td>
+                <td>{{r.pickup.store.seller.phoneNumber}}</td>
+                <td>{{r.pickup.store.governorate}}-{{r.pickup.store.city}}</td>
+                <td>{{r.pickup.governorate}}-{{r.pickup.city}}</td>
+                <td>{{r.pickup.order.buyer.firstName}}-{{r.pickup.order.buyer.phoneNumber}}</td>
+                <td><button class="btn btn-outline-primary" [routerLink]="['/freelancer/myPickups/track/',r.pickup.id]">{{r.pickup.statusPickupSeller}}</button></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <script src="../../../assets/vendors/scripts/core.js"></script>
+      <script src="../../../assets/vendors/scripts/script.min.js"></script>
+      <script src="../../../assets/vendors/scripts/process.js"></script>
+      <script src="../../../assets/vendors/scripts/layout-settings.js"></script>

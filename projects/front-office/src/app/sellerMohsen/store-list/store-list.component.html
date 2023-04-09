@@ -1,0 +1,99 @@
+
+
+  <div class="pd-ltr-20">
+    <div class="card-box pd-20 height-100-p mb-30">
+      <div class="row align-items-center">
+        <div class="col-md-4">
+          <img src="../../../assets/vendors/images/banner-img.png" alt="" />
+        </div>
+        <div class="col-md-8">
+          <h4 class="font-20 weight-500 mb-10 text-capitalize">
+            Welcome back
+            <div class="weight-600 font-30 text-blue">{{user.firstName}} {{user.lastName}}</div>
+          </h4>
+          <p class="font-18 max-width-600">
+
+            Delivery management is crucial for the success of any <a  a [routerLink]="['/Seller/stores']"><strong>Store</strong> </a> It ensures that products are delivered on time and in good condition,
+             which in turn leads to happy customers and increased sales.
+          </p>
+        </div>
+      </div>
+    </div>
+
+
+
+
+    <div class="row pb-10">
+      <div class="col-xl-3 col-lg-3 col-md-6 mb-20">
+        <div class="card-box height-100-p widget-style3">
+          <div class="d-flex flex-wrap">
+            <div class="widget-data">
+              <div class="weight-700 font-24 text-dark">{{nbCountPickupPending}}</div>
+              <div class="font-14 text-secondary weight-500">
+                Waiting
+              </div>
+            </div>
+            <div class="widget-icon">
+              <div class="icon" data-color="#00eccf">
+                <i class="icon-copy dw bi bi-hourglass-split"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-xl-3 col-lg-3 col-md-6 mb-20">
+        <div class="card-box height-100-p widget-style3">
+          <div class="d-flex flex-wrap">
+            <div class="widget-data">
+              <div class="weight-700 font-24 text-dark">{{nbCountPickupOnTheWay}}</div>
+              <div class="font-14 text-secondary weight-500">
+                On The Way
+              </div>
+            </div>
+            <div class="widget-icon">
+              <div class="icon" data-color="#ff5b5b">
+                <span class="icon-copy  bi bi-truck"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-xl-3 col-lg-3 col-md-6 mb-20">
+        <div class="card-box height-100-p widget-style3">
+          <div class="d-flex flex-wrap">
+            <div class="widget-data">
+              <div class="weight-700 font-24 text-dark">{{nbCountPickupDeliverted}}</div>
+              <div class="font-14 text-secondary weight-500">
+                Delivered
+              </div>
+            </div>
+            <div class="widget-icon">
+              <div class="icon">
+                <i
+                  class="icon-copy fa bi-cash-coin"
+                  aria-hidden="true"
+                ></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-xl-3 col-lg-3 col-md-6 mb-20">
+        <div class="card-box height-100-p widget-style3">
+          <div class="d-flex flex-wrap">
+            <div class="widget-data">
+              <div class="weight-700 font-24 text-dark">{{nbCountPickupReturned}}</div>
+              <div class="font-14 text-secondary weight-500">Returned</div>
+            </div>
+            <div class="widget-icon">
+              <div class="icon" data-color="#09cc06">
+                <i class="icon-copy fa fa-home" aria-hidden="true"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+

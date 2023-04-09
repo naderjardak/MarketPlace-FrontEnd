@@ -1,0 +1,467 @@
+
+<div class="config">
+
+<!--====== Main App ======-->
+<div id="app">
+  <!--====== Main Header ======-->
+  <app-header></app-header>
+
+  <div *ngIf="product.id!=idp" class="app-content">
+    <app-not-found></app-not-found>
+  </div>
+  <!--====== End - Main Header ======-->
+  <!--====== App Content ======-->
+  <div *ngIf="product.id==idp" class="app-content">
+
+    <!--====== Section 1 ======-->
+    <div class="u-s-p-t-90">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-5">
+
+            <!--====== Product Breadcrumb ======-->
+            <div class="pd-breadcrumb u-s-m-b-30">
+              <ul class="pd-breadcrumb__list">
+                <li class="has-separator">
+
+                  <a href="index.hml">Home</a></li>
+                <li class="has-separator">
+
+                  <a
+                    href="../shop-side/shop-side.component.html">{{product.productCategory.name}}</a>
+                </li>
+                <li class="has-separator">
+
+                  <a href="../shop-side/shop-side.component.html">{{product.name}}</a></li>
+              </ul>
+            </div>
+            <!--====== End - Product Breadcrumb ======-->
+
+
+            <!--====== Product Detail Zoom ======-->
+            <div class="pd u-s-m-b-30">
+              <div class=" pd-wrap">
+                <div id="pd-o-initiate">
+                  <div class="pd-o-img-wrap" >
+                    <img class="u-img-fluid" src="../../../../assets/front-template/images/product/{{product.image}}"></div>
+                </div>
+              </div>
+            </div>
+            <!--====== End - Product Detail Zoom ======-->
+          </div>
+          <div class="col-lg-7">
+
+            <!--====== Product Right Side Details ======-->
+            <div class="pd-detail">
+              <div>
+
+                <span class="pd-detail__name">{{product.name}}</span></div>
+              <div>
+                <div class="pd-detail__inline">
+
+                  <span class="pd-detail__price">DT {{product.productPrice}}</span>
+
+                  <span class="pd-detail__discount">(discount)</span>
+                  <del class="pd-detail__del">DT {{product.productPriceBeforeDiscount}}</del>
+                </div>
+              </div>
+              <div class="u-s-m-b-15">
+                <div class="pd-detail__rating gl-rating-style"><i class="fas fa-star" *ngFor="let i of countArray(product.rating);"></i><i *ngIf="getFloor(product.rating)<product.rating" class="fas fa-star-half-alt"></i><i *ngFor="let i of countArray(5-product.rating).keys()" class="far fa-star" ></i>
+
+
+                  <span class="pd-detail__review u-s-m-l-4">
+
+                                            <a data-click-scroll="#view-review">{{product.numberOfRatings}} Reviews</a></span>
+                </div>
+              </div>
+              <div class="u-s-m-b-15">
+                <div class="pd-detail__inline">
+
+                  <span class="pd-detail__stock" *ngIf="product.quantity>0">{{product.quantity}} in stock</span>
+
+                  <span class="pd-detail__left" *ngIf="product.quantity==0">Out Of Stock</span></div>
+              </div>
+              <div class="u-s-m-b-15">
+
+                <span class="pd-detail__preview-desc">{{product.description}}</span></div>
+              <div class="u-s-m-b-15">
+              </div>
+              <div class="u-s-m-b-15">
+                <ul class="pd-social-list">
+                  <li>
+
+                    <a class="s-fb--color-hover" href="https://www.facebook.com/profile.php?id=100090877331994" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
+                  <li>
+
+                    <a class="s-tw--color-hover" href="https://www.facebook.com/profile.php?id=100090877331994" target="_blank"><i class="fab fa-twitter"></i></a></li>
+                  <li>
+
+                    <a class="s-insta--color-hover" href="https://www.facebook.com/profile.php?id=100090877331994" target="_blank"><i class="fab fa-instagram"></i></a></li>
+                  <li>
+
+                    <a class="s-wa--color-hover" href="https://www.facebook.com/profile.php?id=100090877331994" target="_blank"><i class="fab fa-whatsapp"></i></a></li>
+                  <li>
+
+                    <a class="s-gplus--color-hover" href="https://www.facebook.com/profile.php?id=100090877331994" target="_blank"><i class="fab fa-google-plus-g"></i></a></li>
+                </ul>
+              </div>
+              <div class="table-p__input-counter-wrap">
+
+                <!--====== Input Counter ======-->
+                <div class="input-counter" style="margin-right: 1000px;">
+                  <span  class="input-counter__minus fas fa-minus" (click)="updateQuantityNumber(-1)"></span>
+
+                  <input class="input-counter__text input-counter--text-primary-style" type="text" value="{{quantityNumber}}" data-min="1" data-max="1000">
+
+                  <span  class="input-counter__plus fas fa-plus"(click)="updateQuantityNumber(1)" ></span></div>
+
+                <!--====== End - Input Counter ======-->
+              </div>
+              <br>
+              <div class="u-s-m-b-15">
+                <form class="pd-detail__form">
+                  <div class="pd-detail-inline-2">
+                    <div class="u-s-m-b-15">
+
+                      <button class="btn btn--e-brand-b-2" (click)="addProductToCart()">Add To Cart</button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+            <!--====== End - Product Right Side Details ======-->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--====== Product Detail Tab ======-->
+    <div class="u-s-p-y-90">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="pd-tab">
+              <div class="u-s-m-b-30">
+                <ul class="nav pd-tab__list">
+                  <li class="nav-item">
+
+                    <a class="nav-link active" data-toggle="tab" href="#pd-desc">DESCRIPTION</a></li>
+                  <li class="nav-item">
+
+                    <a class="nav-link" data-toggle="tab" href="#pd-tag">TAGS</a></li>
+                  <li class="nav-item">
+
+                    <a class="nav-link" id="view-review" data-toggle="tab" href="#pd-rev">REVIEWS
+
+                      <span>(23)</span></a></li>
+                </ul>
+              </div>
+              <div class="tab-content">
+
+                <!--====== Tab 1 ======-->
+                <div class="tab-pane fade show active" id="pd-desc">
+                  <div class="pd-tab__desc">
+                    <div class="u-s-m-b-15">
+                      <p>{{product.description}}</p>
+                    </div>
+                    <div *ngIf="product.videoLink.length">
+                    <iframe  width="560" height="315" [src]="videoUrl" title="YouTube video player" style="box-sizing: border-box;"></iframe>
+                    </div>
+                    <div class="u-s-m-b-30">
+                      <ul>
+                        <li><i class="fas fa-check u-s-m-r-8"></i>
+
+                          <span>Buyer Protection.</span></li>
+                        <li><i class="fas fa-check u-s-m-r-8"></i>
+
+                          <span>Full Refund if you don't receive your order.</span></li>
+                        <li><i class="fas fa-check u-s-m-r-8"></i>
+
+                          <span>Returns accepted if product not as described.</span></li>
+                      </ul>
+                    </div>
+                    <div class="u-s-m-b-15">
+                      <h4>PRODUCT INFORMATION</h4>
+                    </div>
+                    <div class="u-s-m-b-15">
+                      <div class="pd-table gl-scroll">
+                        <table>
+                          <tbody>
+                          <tr>
+                            <td>Main Material</td>
+                            <td>Cotton</td>
+                          </tr>
+                          <tr>
+                            <td>Color</td>
+                            <td>Green, Blue, Red</td>
+                          </tr>
+                          <tr>
+                            <td>Sleeves</td>
+                            <td>Long Sleeve</td>
+                          </tr>
+                          <tr>
+                            <td>Top Fit</td>
+                            <td>Regular</td>
+                          </tr>
+                          <tr>
+                            <td>Print</td>
+                            <td>Not Printed</td>
+                          </tr>
+                          <tr>
+                            <td>Neck</td>
+                            <td>Round Neck</td>
+                          </tr>
+                          <tr>
+                            <td>Pieces Count</td>
+                            <td>1 Piece</td>
+                          </tr>
+                          <tr>
+                            <td>Occasion</td>
+                            <td>Casual</td>
+                          </tr>
+                          <tr>
+                            <td>Shipping Weight (kg)</td>
+                            <td>0.5</td>
+                          </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!--====== End - Tab 1 ======-->
+
+
+                <!--====== Tab 2 ======-->
+                <div class="tab-pane" id="pd-tag">
+                  <div class="pd-tab__tag">
+                    <h2 class="u-s-m-b-15">ADD YOUR TAGS</h2>
+                    <div class="u-s-m-b-15">
+                      <form>
+
+                        <input class="input-text input-text--primary-style" type="text">
+
+                        <button class="btn btn--e-brand-b-2" type="submit">ADD TAGS</button>
+                      </form>
+                    </div>
+
+                    <span class="gl-text">Use spaces to separate tags. Use single quotes (') for phrases.</span>
+                  </div>
+                </div>
+                <!--====== End - Tab 2 ======-->
+
+
+                <!--====== Tab 3 ======-->
+                <div class="tab-pane" id="pd-rev">
+                  <div class="pd-tab__rev">
+                    <div class="u-s-m-b-30">
+                      <div class="pd-tab__rev-score">
+                        <div class="u-s-m-b-8">
+                          <h2>23 Reviews - 4.6 (Overall)</h2>
+                        </div>
+                        <div class="gl-rating-style-2 u-s-m-b-8"><i class="fas fa-star"></i><i
+                          class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                          class="fas fa-star-half-alt"></i></div>
+                        <div class="u-s-m-b-8">
+                          <h4>We want to hear from you!</h4>
+                        </div>
+
+                        <span class="gl-text">Tell us what you think about this item</span>
+                      </div>
+                    </div>
+                    <div class="u-s-m-b-30">
+                      <form class="pd-tab__rev-f1">
+                        <div class="rev-f1__group">
+                          <div class="u-s-m-b-15">
+                            <h2>23 Review(s) for Man Ruched Floral Applique Tee</h2>
+                          </div>
+                          <div class="u-s-m-b-15">
+
+                            <label for="sort-review"></label><select class="select-box select-box--primary-style"
+                                                                     id="sort-review">
+                            <option selected>Sort by: Best Rating</option>
+                            <option>Sort by: Worst Rating</option>
+                          </select></div>
+                        </div>
+                        <div class="rev-f1__review">
+                          <div class="review-o u-s-m-b-15">
+                            <div class="review-o__info u-s-m-b-8">
+
+                              <span class="review-o__name">John Doe</span>
+
+                              <span class="review-o__date">27 Feb 2018 10:57:43</span></div>
+                            <div class="review-o__rating gl-rating-style u-s-m-b-8"><i class="fas fa-star"></i><i
+                              class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                              class="far fa-star"></i>
+
+                              <span>(4)</span></div>
+                            <p class="review-o__text">Lorem Ipsum is simply dummy text of the printing and typesetting
+                              industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+                              when an unknown printer took a galley of type and scrambled it to make a type specimen
+                              book.</p>
+                          </div>
+                          <div class="review-o u-s-m-b-15">
+                            <div class="review-o__info u-s-m-b-8">
+
+                              <span class="review-o__name">John Doe</span>
+
+                              <span class="review-o__date">27 Feb 2018 10:57:43</span></div>
+                            <div class="review-o__rating gl-rating-style u-s-m-b-8"><i class="fas fa-star"></i><i
+                              class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                              class="far fa-star"></i>
+
+                              <span>(4)</span></div>
+                            <p class="review-o__text">Lorem Ipsum is simply dummy text of the printing and typesetting
+                              industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+                              when an unknown printer took a galley of type and scrambled it to make a type specimen
+                              book.</p>
+                          </div>
+                          <div class="review-o u-s-m-b-15">
+                            <div class="review-o__info u-s-m-b-8">
+
+                              <span class="review-o__name">John Doe</span>
+
+                              <span class="review-o__date">27 Feb 2018 10:57:43</span></div>
+                            <div class="review-o__rating gl-rating-style u-s-m-b-8"><i class="fas fa-star"></i><i
+                              class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                              class="far fa-star"></i>
+
+                              <span>(4)</span></div>
+                            <p class="review-o__text">Lorem Ipsum is simply dummy text of the printing and typesetting
+                              industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+                              when an unknown printer took a galley of type and scrambled it to make a type specimen
+                              book.</p>
+                          </div>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+                <!--====== End - Tab 3 ======-->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--====== End - Product Detail Tab ======-->
+    <div class="u-s-p-b-90">
+      <!--====== Section Intro ======-->
+      <div class="section__intro u-s-m-b-46">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="section__text-wrap">
+                <h1 class="section__heading u-c-secondary u-s-m-b-12">CUSTOMER ALSO VIEWED</h1>
+
+                <span class="section__span u-c-grey">PRODUCTS THAT CUSTOMER VIEWED</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--====== End - Section Intro ======-->
+
+      <!--====== Section Content ======-->
+      <div class="section__content">
+        <div class="container">
+          <div class="row">
+            <div class="slider-controls">
+
+              <button class="slider-button slider-button-left" (click)="slideLeft()"><i class="fas fa-angle-left"></i></button>
+            </div>
+            <div class="slider-container" style="width:910px">
+              <div  *ngFor="let v of Vued" class="col-lg-3 col-md-6 col-sm-6 u-s-m-b-39">
+                <div  class="product-r u-h-100">
+                  <div  class="product-r__container">
+
+                    <a class="aspect aspect--bg-grey aspect--square u-d-block" (click)="gotoDetails(v.id)">
+
+                      <img class="aspect__img" src="../../../../assets/front-template/images/product/{{v.image}}" alt=""></a>
+                    <div class="product-r__action-wrap">
+                      <ul class="product-r__action-list">
+                        <li>
+
+                          <a data-modal="modal" data-modal-id="#quick-look" (click)="gotoDetails(v.id)"><i class="fas fa-search-plus"></i></a></li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="product-r__info-wrap">
+
+                                        <span class="product-r__category">
+
+                                            <a (click)="gotoDetails(v.id) ">{{v.productCategory.name}}</a></span>
+                    <div class="product-r__n-p-wrap">
+
+                                            <span class="product-r__name">
+
+                                                <a (click)="gotoDetails(v.id) ">{{v.name}}</a></span>
+
+                      <span class="product-r__price">DT {{v.productPrice}}</span></div>
+
+                    <span class="product-r__description">{{v.description}}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="slider-controls">
+              <button class="slider-button slider-button-right" (click)="slideRight()"><i class="fas fa-angle-right"></i></button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!--====== End - Section Content ======-->
+    </div>
+    <!--====== End - Section 1 ======-->
+  </div>
+  <!--====== End - App Content ======-->
+
+
+  <!--====== Main Footer ======-->
+  <app-footer></app-footer>
+
+  <!--====== Modal Section ======-->
+
+
+  <!--====== Quick Look Modal ======-->
+  <!--====== End - Quick Look Modal ======-->
+
+
+  <!--====== Add to Cart Modal ======-->
+  <!--====== End - Add to Cart Modal ======-->
+  <!--====== End - Modal Section ======-->
+</div>
+<!--====== End - Main App ======-->
+
+
+<!--====== Google Analytics: change UA-XXXXX-Y to be your site's ID ======-->
+<script src="https://www.google-analytics.com/analytics.js" async defer></script>
+
+<!--====== Vendor Js ======-->
+<script src="../../../../assets/front-template/js/vendor.js"></script>
+
+<!--====== jQuery Shopnav plugin ======-->
+<script src="../../../../assets/front-template/js/jquery.shopnav.js"></script>
+
+<!--====== App ======-->
+<script src="../../../../assets/front-template/js/app.js"></script>
+
+<!--====== Noscript ======-->
+<noscript>
+  <div class="app-setting">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <div class="app-setting__wrap">
+            <h1 class="app-setting__h1">JavaScript is disabled in your browser.</h1>
+
+            <span class="app-setting__text">Please enable JavaScript in your browser or upgrade to a JavaScript-capable browser.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</noscript>
+</div>
+

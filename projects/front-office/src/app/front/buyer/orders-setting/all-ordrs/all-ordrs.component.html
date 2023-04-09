@@ -1,0 +1,55 @@
+  <div class="dash__box dash__box--shadow dash__box--radius dash__box--bg-white u-s-m-b-30">
+    <div class="dash__pad-2">
+      <h1 class="dash__h1 u-s-m-b-14">My Orders</h1>
+
+      <span class="dash__text u-s-m-b-30">Here you can see all orderss that have been delivered.</span>
+      <form class="m-order u-s-m-b-30">
+        <div class="m-order__select-wrapper">
+          <label class="u-s-m-r-8" for="my-order-sort">Show:</label>
+          <select class="select-box select-box--primary-style" id="my-order-sort" [(ngModel)]="selectedOption" (change)="filterOrders($event)">
+            <option value="Last 5 orders">Last 5 orders</option>
+            <option value="Last 15 days">Last 15 days</option>
+            <option value="Last 30 days">Last 30 days</option>
+            <option value="Last 6 months">Last 6 months</option>
+            <option value="All Orders" selected>All Orders</option>
+          </select>
+        </div>
+      </form>
+      <div class="m-order__list">
+        <div class="m-order__get" *ngFor="let o of orderList">
+          <div class="manage-o__header u-s-m-b-30">
+            <div class="dash-l-r">
+              <div>
+                <div class="manage-o__text-2 u-c-secondary">Order #{{o.ref}}</div>
+                <div class="manage-o__text u-c-silver">Placed on {{o.creationDate}}</div>
+              </div>
+            </div>
+          </div>
+          <div class="manage-o__description">
+            <div>
+
+              <span *ngIf="o.status=='WAITING_FOR_PAYMENT'" class="manage-o__badge badge--processing">Waiting Payement</span><span *ngIf="o.status=='REFUSED_PAYMENT'" class="manage-o__badge badge--delivered">Cancled Order</span><span *ngIf="o.status=='ACCEPTED_PAYMENT'"  class="manage-o__badge badge--shipped">Accepted Order</span></div>
+            <div class="description__info-wrap">
+
+              <div>
+
+                                                                <span class="manage-o__text-2 u-c-silver">Paiment type :
+
+                                                                    <span class="manage-o__text-2 u-c-secondary" *ngIf="o.payment=='CASH_ON_DELIVERY'">Cash</span><span class="manage-o__text-2 u-c-secondary" *ngIf="o.payment=='BANK_CARD'">Card</span></span></div>
+              <div>
+
+                                                                <span class="manage-o__text-2 u-c-silver">Total:
+
+                                                                    <span class="manage-o__text-2 u-c-secondary">DT {{o.sum+o.deliveryPrice}}</span></span></div>
+            </div>
+            <div>
+              <div class="dash__link dash__link--brand">
+
+                <a href="../track-order/track-order.component.html">Claim On Order</a></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+

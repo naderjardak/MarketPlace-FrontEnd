@@ -1,0 +1,135 @@
+
+<article class="card">
+  <header class="card-header"> My Pickups / Tracking </header>
+  <div class="card-body">
+      <h6>Pickup TrakingID: {{pickup.codePickup}}</h6>
+      <article class="card">
+          <div class="card-body row">
+              <div class="col"> <strong>Estimated Delivery time:</strong> <br>{{pickup.deliveryTimeInHoursBuyer}} Hours </div>
+              <div class="col"> <strong>Shipping To:</strong> <br> {{pickup.governorate}} , {{pickup.city}} <br>  <i class="fa fa-phone"></i> {{pickup.secondPhoneNumber}} </div>
+              <div class="col"> <strong>Status:</strong> <br> {{pickup.statusPickupSeller}} </div>
+              <div class="col"> <strong>Tracking #:</strong> <br> {{pickup.codePickup}}</div>
+
+              <form #addform="ngForm" (ngSubmit)="addForm(addform)">
+                <div class="col"> <strong>Change Status:</strong> </div>
+                  <div class="col-sm-12 col-md-18">
+                    <select class="custom-select col-12"id="typeOfGear" name="typeOfGearr" [(ngModel)]="pickup.statusPickupSeller" >
+                    <option *ngFor="let type of statusPickup" [value]="type">{{ type }}</option>
+                    </select>
+                    <br>
+                    <br>
+                    <button type="submit" class="btn btn-primary">Save</button>
+                  </div>
+
+                </form>
+          </div>
+      </article>
+      <div *ngIf="pickup.statusPickupSeller==='ASSIGNED';else status">
+        <div class="track">
+          <div class="step active"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text">Picked</span> </div>
+          <div class="step active"> <span class="icon"> <i class="fa fa-user"></i> </span> <span class="text"> Assigned</span> </div>
+          <div class="step"> <span class="icon"> <i class="icon-copy bi bi-box2-heart-fill"></i> </span> <span class="text"> Taked </span> </div>
+          <div class="step"> <span class="icon"> <i class="fa fa-truck"></i> </span> <span class="text"> On the way </span> </div>
+          <div class="step"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text">Delivered</span> </div>
+          <div class="step"> <span class="icon"> <i class="icon-copy bi bi-arrow-return-left"></i> </span> <span class="text"> Returned </span> </div>
+          <div class="step"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text">Refunded</span> </div>
+      </div>
+    </div>
+   <ng-template #status>
+      <div *ngIf="pickup.statusPickupSeller==='TAKED';else status1">
+        <div class="track">
+          <div class="step active"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text">Picked</span> </div>
+          <div class="step active"> <span class="icon"> <i class="fa fa-user"></i> </span> <span class="text"> Assigned</span> </div>
+          <div class="step active"> <span class="icon"> <i class="icon-copy bi bi-box2-heart-fill"></i> </span> <span class="text"> Taked </span> </div>
+          <div class="step"> <span class="icon"> <i class="fa fa-truck"></i> </span> <span class="text"> On the way </span> </div>
+          <div class="step"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text">Delivered</span> </div>
+          <div class="step"> <span class="icon"> <i class="icon-copy bi bi-arrow-return-left"></i> </span> <span class="text"> Returned </span> </div>
+          <div class="step"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text">Refunded</span> </div>
+      </div>
+      </div>
+    </ng-template>
+    <ng-template #status1>
+      <div *ngIf="pickup.statusPickupSeller==='ONTHEWAY';else status2">
+        <div class="track">
+          <div class="step active"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text">Picked</span> </div>
+          <div class="step active"> <span class="icon"> <i class="fa fa-user"></i> </span> <span class="text"> Assigned</span> </div>
+          <div class="step active"> <span class="icon"> <i class="icon-copy bi bi-box2-heart-fill"></i> </span> <span class="text"> Taked </span> </div>
+          <div class="step active"> <span class="icon"> <i class="fa fa-truck"></i> </span> <span class="text"> On the way </span> </div>
+          <div class="step"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text">Delivered</span> </div>
+          <div class="step"> <span class="icon"> <i class="icon-copy bi bi-arrow-return-left"></i> </span> <span class="text"> Returned </span> </div>
+          <div class="step"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text">Refunded</span> </div>
+      </div>
+      </div>
+    </ng-template>
+    <ng-template #status2>
+      <div *ngIf="pickup.statusPickupSeller==='DELIVERED';else status3">
+        <div class="track">
+          <div class="step active"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text">Picked</span> </div>
+          <div class="step active"> <span class="icon"> <i class="fa fa-user"></i> </span> <span class="text"> Assigned</span> </div>
+          <div class="step active"> <span class="icon"> <i class="icon-copy bi bi-box2-heart-fill"></i> </span> <span class="text"> Taked </span> </div>
+          <div class="step active"> <span class="icon"> <i class="fa fa-truck"></i> </span> <span class="text"> On the way </span> </div>
+          <div class="step active"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text">Delivered</span> </div>
+          <div class="step"> <span class="icon"> <i class="icon-copy bi bi-arrow-return-left"></i> </span> <span class="text"> Returned </span> </div>
+          <div class="step"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text">Refunded</span> </div>
+      </div>
+      </div>
+    </ng-template>
+    <ng-template #status3>
+      <div *ngIf="pickup.statusPickupSeller==='RETURN';else status4">
+        <div class="track">
+          <div class="step active"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text">Picked</span> </div>
+          <div class="step active"> <span class="icon"> <i class="fa fa-user"></i> </span> <span class="text"> Assigned</span> </div>
+          <div class="step active"> <span class="icon"> <i class="icon-copy bi bi-box2-heart-fill"></i> </span> <span class="text"> Taked </span> </div>
+          <div class="step active"> <span class="icon"> <i class="fa fa-truck"></i> </span> <span class="text"> On the way </span> </div>
+          <div class="step"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text">Delivered</span> </div>
+          <div class="step active"> <span class="icon"> <i class="icon-copy bi bi-arrow-return-left"></i> </span> <span class="text"> Returned </span> </div>
+          <div class="step"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text">Refunded</span> </div>
+      </div>
+      </div>
+    </ng-template>
+    <ng-template #status4>
+      <div *ngIf="pickup.statusPickupSeller==='REFUNDED'">
+        <div class="track">
+          <div class="step active"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text">Picked</span> </div>
+          <div class="step active"> <span class="icon"> <i class="fa fa-user"></i> </span> <span class="text"> Assigned</span> </div>
+          <div class="step active"> <span class="icon"> <i class="icon-copy bi bi-box2-heart-fill"></i> </span> <span class="text"> Taked </span> </div>
+          <div class="step active"> <span class="icon"> <i class="fa fa-truck"></i> </span> <span class="text"> On the way </span> </div>
+          <div class="step"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text">Delivered</span> </div>
+          <div class="step"> <span class="icon"> <i class="icon-copy bi bi-arrow-return-left"></i> </span> <span class="text"> Returned </span> </div>
+          <div class="step active"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text">Refunded</span> </div>
+      </div>
+      </div>
+    </ng-template>
+
+      <hr>
+      <ul class="row">
+          <li class="col-md-4">
+              <figure class="itemside mb-3">
+                  <div class="aside"><img src="https://i.imgur.com/iDwDQ4o.png" class="img-sm border"></div>
+                  <figcaption class="info align-self-center">
+                      <p class="title">Dell Laptop with 500GB HDD <br> 8GB RAM</p> <span class="text-muted">$950 </span>
+                  </figcaption>
+              </figure>
+          </li>
+          <li class="col-md-4">
+              <figure class="itemside mb-3">
+                  <div class="aside"><img src="https://i.imgur.com/tVBy5Q0.png" class="img-sm border"></div>
+                  <figcaption class="info align-self-center">
+                      <p class="title">HP Laptop with 500GB HDD <br> 8GB RAM</p> <span class="text-muted">$850 </span>
+                  </figcaption>
+              </figure>
+          </li>
+          <li class="col-md-4">
+              <figure class="itemside mb-3">
+                  <div class="aside"><img src="https://i.imgur.com/Bd56jKH.png" class="img-sm border"></div>
+                  <figcaption class="info align-self-center">
+                      <p class="title">ACER Laptop with 500GB HDD <br> 8GB RAM</p> <span class="text-muted">$650 </span>
+                  </figcaption>
+              </figure>
+          </li>
+      </ul>
+      <hr>
+      <a href="#" class="btn btn-warning" data-abc="true"> <i class="fa fa-chevron-left"></i> Back to orders</a>
+  </div>
+</article>
+

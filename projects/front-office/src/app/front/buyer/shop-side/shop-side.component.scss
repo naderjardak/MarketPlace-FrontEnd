@@ -1,0 +1,34 @@
+$gutter: 1rem; //for primeflex grid system
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px 0;
+}
+
+.btn {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #fff;
+  color: #333;
+  padding: 6px 12px;
+  margin-right: 5px;
+  cursor: pointer;
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+.btn-light {
+  background-color: #f5f5f5;
+}
+
+.btn-light:hover {
+  background-color: #ddd;
+}
+
+.btn-light:active {
+  background-color: #ccc;
+}

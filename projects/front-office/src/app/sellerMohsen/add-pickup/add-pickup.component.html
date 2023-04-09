@@ -1,0 +1,121 @@
+<div class="pd-ltr-20 xs-pd-20-10">
+  <div class="min-height-200px">
+    <div class="page-header">
+      <div class="row">
+        <div class="col-md-6 col-sm-12">
+          <div class="title">
+            <h4>Create Pickup</h4>
+          </div>
+          <nav aria-label="breadcrumb" role="navigation">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item " aria-current="page">
+                Stores
+              </li>
+              <li class="breadcrumb-item " aria-current="page">
+                Orders
+              </li>
+              <li class="breadcrumb-item active" aria-current="page">
+                Create Pickup
+              </li>
+            </ol>
+          </nav>
+        </div>
+      </div>
+    </div>
+    <!-- Default Basic Forms Start -->
+    <div class="pd-20 card-box mb-30">
+      <div class="clearfix">
+        <div class="pull-left">
+          <h4 class="text-blue h4">Create Pickup</h4>
+        </div>
+      </div>
+      <form #addform="ngForm" (ngSubmit)="addForm(addform)">
+        <div class="form-group row">
+          <label class="col-sm-12 col-md-2 col-form-label">First Name:</label>
+          <div class="col-sm-12 col-md-10">
+            <input class="form-control" id="firstName" name="firstName" [(ngModel)]="user.firstName" disabled >
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-sm-12 col-md-2 col-form-label">Last Name:</label>
+          <div class="col-sm-12 col-md-10">
+            <input class="form-control" id="lastName" name="lastName" [(ngModel)]="user.lastName" disabled >
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-sm-12 col-md-2 col-form-label">Phone Number:</label>
+          <div class="col-sm-12 col-md-10">
+            <input class="form-control" id="PhoneNumber" name="PhoneNumber" [(ngModel)]="user.phoneNumber" disabled >
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-sm-12 col-md-2 col-form-label">Second Number:</label>
+          <div class="col-sm-12 col-md-10">
+            <input class="form-control" id="SecondPhoneNumber" name="secondphoneNumber" ngModel >
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-sm-12 col-md-2 col-form-label">Governorate</label>
+          <div class="col-sm-12 col-md-10">
+            <select class="custom-select col-12" id="governorate" name="governorate" [(ngModel)]="selectedGovernorate"  [(ngModel)]="shipping.governorate"(ngModelChange)="updateCities()">
+              <option *ngFor="let gov of governorates" [value]="gov.name">{{ gov.name }}</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label class="col-sm-12 col-md-2 col-form-label">City</label>
+          <div class="col-sm-12 col-md-10">
+            <select class="custom-select col-12"id="city" name="city" [(ngModel)]="shipping.city">
+            <option>{{ shipping.city }}</option>
+            <option *ngFor="let city of cities" [value]="city">{{ city }}</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-sm-12 col-md-2 col-form-label">Full address and availability</label>
+          <div class="col-sm-12 col-md-10">
+            <input class="form-control" id="availability" name="availability" ngModel   >
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-sm-12 col-md-2 col-form-label">Comment</label>
+          <div class="col-sm-12 col-md-10">
+            <textarea  class="form-control" id="comment" name="comment" ngModel  ></textarea>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label class="col-sm-12 col-md-2 col-form-label">Pickup Weight:</label>
+          <div class="col-sm-12 col-md-10">
+            <input class="form-control" id="pw" name="OrderWeight" [(ngModel)]="order.productsWeightKg" disabled>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label class="col-sm-12 col-md-2 col-form-label">Payment Type</label>
+          <div class="col-sm-12 col-md-10">
+            <input class="form-control" id="pt" name="paymentType" [(ngModel)]="order.payment"  disabled>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label class="col-sm-12 col-md-2 col-form-label">Price Delivery</label>
+          <div class="col-sm-12 col-md-10">
+            <input class="form-control" id="Price" name="priceDelivery" [(ngModel)]="order.deliveryPrice" [disabled]="order.deliveryPrice>=0">
+          </div>
+        </div>
+        <br>
+        <div class="btn-list">
+          <button
+            type="submit"
+            class="btn btn-primary btn-lg btn-block"
+          >
+          Add Pickup
+          </button>
+          <button
+            type="button"
+            class="btn btn-secondary btn-lg btn-block"
+          >Order Cancel</button>
+
+        </div>

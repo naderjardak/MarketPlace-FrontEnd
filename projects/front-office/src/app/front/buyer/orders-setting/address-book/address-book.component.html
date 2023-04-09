@@ -1,0 +1,73 @@
+  <div class="dash__box dash__box--shadow dash__box--radius dash__box--bg-white u-s-m-b-30">
+    <div class="dash__pad-2">
+      <div class="dash__address-header">
+        <h1 class="dash__h1">Address Book</h1>
+      </div>
+    </div>
+  </div>
+  <div class="dash__box dash__box--shadow dash__box--bg-white dash__box--radius u-s-m-b-30">
+    <div class="dash__table-2-wrap gl-scroll">
+      <table class="dash__table-2">
+        <thead>
+        <tr>
+          <th>Full Name</th>
+          <th>Address</th>
+          <th>Region</th>
+          <th>Phone Number</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let s of shipping">
+
+          <td>{{s.buyer.firstName+' '+s.buyer.lastName}}</td>
+          <td>{{s.governorate}}</td>
+          <td>{{s.city}}</td>
+          <td>(+216){{s.buyer.phoneNumber}}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div>
+
+    <a class="dash__custom-link btn--e-brand-b-2" data-toggle="modal" data-target="#add-ship-address"><i class="fas fa-plus u-s-m-r-8"></i>
+
+      <span>Add New Address</span></a></div>
+
+  <div class="modal fade" id="add-ship-address">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-body">
+          <div class="checkout-modal1">
+            <form name="form" (submit)="addForm()" #f="ngForm"  class="checkout-modal1__form">
+              <div class="f-cart__pad-box">
+                <h1 class="gl-h1">ESTIMATE SHIPPING AND TAXES</h1>
+
+                <div class="u-s-m-b-30">
+
+                  <!--====== Select Box ======-->
+
+                  <label class="gl-label" for="shipping-state">STATE/PROVINCE *</label><select [(ngModel)]="form.city" name="city" id="city" class="select-box select-box--primary-style" id="shipping-state">
+                  <optgroup *ngFor="let g of city"  label="{{g.name}}">
+                    <option *ngFor="let i of g.cities" [value]="i">{{ i }}</option>
+                  </optgroup>
+                </select>
+                  <!--====== End - Select Box ======-->
+                </div>
+                <div class="u-s-m-b-30">
+
+                  <label class="gl-label" for="gpsPoint">EXACTE ADRESS *</label>
+
+                  <input class="input-text input-text--primary-style" type="text" [(ngModel)]="form.gpsPoint" id="gpsPoint" name="gpsPoint" placeholder="EXACTE ADRESS..."></div>
+                <div class="gl-modal-btn-group">
+                  <button class="f-cart__ship-link btn--e-transparent-brand-b-2"  type="submit">ADD SHIPPING GEOLOCATION</button> <button class="btn btn--e-grey-b-2" type="button" data-dismiss="modal">CANCEL</button></div>
+              </div>
+
+
+              <span class="gl-text">Note: There are some countries where free shipping is available otherwise our flat rate charges or country delivery charges will be apply.</span>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

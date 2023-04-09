@@ -1,0 +1,304 @@
+
+
+<div class="config">
+
+
+    <!--====== Main App ======-->
+    <div id="app">
+
+        <!--====== Main Header ======-->
+      <app-header></app-header>
+        <!--====== End - Main Header ======-->
+
+
+        <!--====== App Content ======-->
+        <div class="app-content">
+
+            <!--====== Section 1 ======-->
+            <div class="u-s-p-y-90">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-3 col-md-12">
+                            <div class="shop-w-master">
+                                <h1 class="shop-w-master__heading u-s-m-b-30"><i class="fas fa-filter u-s-m-r-8"></i>
+
+                                    <span>FILTERS</span></h1>
+                                <div class="shop-w-master__sidebar">
+                                    <div class="u-s-m-b-30">
+                                        <div class="shop-w shop-w--style">
+                                            <div class="shop-w__intro-wrap">
+                                                <h1 class="shop-w__h">CATEGORY</h1>
+
+                                                <span class="fas fa-minus shop-w__toggle" data-target="#s-category" data-toggle="collapse"></span>
+                                            </div>
+                                            <div class="shop-w__wrap collapse show" id="s-category">
+                                                <ul class="shop-w__category-list gl-scroll">
+                                                    <li class="has-list" *ngFor="let c of categories">
+
+                                                        <a (click)=" categorie=c.name;getAllProducts()">{{c.name}}</a>
+
+                                                        <span class="category-list__text u-s-m-l-6">(23)</span>
+                                                       <ul style="display:block" >
+                                                            <li class="has-list" *ngFor="let sc of c.subCategory">
+                                                                <a (click)="categorie=sc.name;getAllProducts()">{{sc.name}}</a>
+                                                            </li>
+                                                        </ul>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="u-s-m-b-30">
+                                        <div class="shop-w shop-w--style">
+                                            <div class="shop-w__intro-wrap">
+                                                <h1 class="shop-w__h">RATING</h1>
+
+                                                <span class="fas fa-minus shop-w__toggle" data-target="#s-rating" data-toggle="collapse"></span>
+                                            </div>
+                                            <div class="shop-w__wrap collapse show" id="s-rating">
+                                                <ul class="shop-w__list gl-scroll">
+                                                    <li>
+                                                        <div class="rating__check">
+
+                                                            <input type="checkbox" (click)="setRate(5)">
+                                                            <div class="rating__check-star-wrap"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                                                        </div>
+
+                                                        <span class="shop-w__total-text">(2)</span>
+                                                    </li>
+                                                    <li>
+                                                        <div class="rating__check" >
+
+                                                            <input type="checkbox" (click)="setRate(4)">
+                                                            <div class="rating__check-star-wrap"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>
+
+                                                                <span>& Up</span></div>
+                                                        </div>
+
+                                                        <span class="shop-w__total-text">(8)</span>
+                                                    </li>
+                                                    <li>
+                                                        <div class="rating__check" >
+
+                                                            <input type="checkbox" (click)="setRate(3)">
+                                                            <div class="rating__check-star-wrap"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i>
+
+                                                                <span>& Up</span></div>
+                                                        </div>
+
+                                                        <span class="shop-w__total-text">(10)</span>
+                                                    </li>
+                                                    <li>
+                                                        <div class="rating__check" >
+
+                                                            <input type="checkbox" (click)="setRate(2)">
+                                                            <div class="rating__check-star-wrap"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i>
+
+                                                                <span>& Up</span></div>
+                                                        </div>
+
+                                                        <span class="shop-w__total-text" >(12)</span>
+                                                    </li>
+                                                    <li>
+                                                        <div class="rating__check">
+
+                                                            <input type="checkbox" (click)="setRate(1)" >
+                                                            <div class="rating__check-star-wrap"><i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i>
+
+                                                                <span>& Up</span></div>
+                                                        </div>
+
+                                                        <span class="shop-w__total-text" >(1)</span>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="u-s-m-b-30">
+                                        <div class="shop-w shop-w--style">
+                                            <div class="shop-w__intro-wrap">
+                                                <h1 class="shop-w__h">SHIPPING</h1>
+
+                                                <span class="fas fa-minus shop-w__toggle" data-target="#s-shipping" data-toggle="collapse"></span>
+                                            </div>
+                                            <div class="shop-w__wrap collapse show" id="s-shipping">
+                                                <ul class="shop-w__list gl-scroll">
+                                                    <li>
+
+                                                        <!--====== Check Box ======-->
+                                                        <div class="check-box">
+
+                                                            <input type="checkbox" id="free-shipping">
+                                                            <div class="check-box__state check-box__state--primary" ><input type="checkbox" [(ngModel)]="isChecked" (click)="handleSubmit()">
+
+                                                                <label class="check-box__label" for="free-shipping">Free Shipping</label></div>
+                                                        </div>
+                                                        <!--====== End - Check Box ======-->
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="u-s-m-b-30">
+                                        <div class="shop-w shop-w--style">
+                                            <div class="shop-w__intro-wrap">
+                                                <h1 class="shop-w__h">PRICE</h1>
+
+                                                <span class="fas fa-minus shop-w__toggle" data-target="#s-price" data-toggle="collapse"></span>
+                                            </div>
+                                            <div class="shop-w__wrap collapse show" id="s-price">
+                                                <form name="form" (submit)="getAllProducts()" #f="ngForm" class="shop-w__form-p">
+                                                    <div class="shop-w__form-p-wrap">
+                                                        <div>
+
+                                                            <label for="min"></label>
+
+                                                          <input class="input-text input-text--primary-style" id="min" name="min" [(ngModel)]="form.min" (change)="getAllProducts()" type="number" min="0" max="1000" placeholder="Min">
+                                                        </div>
+                                                        <div>
+
+                                                            <label for="max"></label>
+
+                                                          <input class="input-text input-text--primary-style" id="max" name="max" [(ngModel)]="form.max" (change)="getAllProducts()" type="number" min="0" max="1000" placeholder="Max">
+                                                        </div>
+
+                                                          <div>
+
+                                                            <button class="btn btn--icon fas fa-angle-right btn--e-transparent-platinum-b-2" type="submit"></button></div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="u-s-m-b-30">
+                                        <div class="shop-w shop-w--style">
+                                            <div class="shop-w__intro-wrap">
+                                                <h1 class="shop-w__h">MANUFACTURER</h1>
+
+                                                <span class="fas fa-minus shop-w__toggle" data-target="#s-manufacturer" data-toggle="collapse"></span>
+                                            </div>
+                                            <div class="shop-w__wrap collapse show" id="s-manufacturer">
+                                                <ul class="shop-w__list-2">
+                                                    <li *ngFor="let ml of markList">
+                                                        <div class="list__content">
+
+                                                            <input type="checkbox">
+
+                                                            <span >{{ml}}</span></div>
+
+                                                        <span class="shop-w__total-text">(23)</span>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-9 col-md-12">
+                            <div class="shop-p">
+                                <div class="shop-p__toolbar u-s-m-b-30">
+                                    <div class="shop-p__meta-wrap u-s-m-b-60">
+
+                                        <span class="shop-p__meta-text-1">FOUND {{products.length}} RESULTS</span>
+                                        <div class="shop-p__meta-text-2">
+
+                                            <span>Related Searches:</span>
+
+                                            <a class="gl-tag btn--e-brand-shadow" >men's clothing</a>
+
+                                            <a class="gl-tag btn--e-brand-shadow" href="#">mobiles & tablets</a>
+
+                                            <a class="gl-tag btn--e-brand-shadow" href="#">books & audible</a></div>
+                                    </div>
+                                    <div class="shop-p__tool-style">
+                                        <div class="tool-style__group u-s-m-b-8">
+
+                                            <span class="js-shop-grid-target is-active">Grid</span>
+
+                                            <span class="js-shop-list-target">List</span></div>
+                                        <form>
+                                            <div class="tool-style__form-wrap">
+                                                <div class="u-s-m-b-8">
+                                                  <select class="select-box select-box--transparent-b-2" (change)="onChange($event)">
+                                                    <option value="9" selected>Show: 9</option>
+                                                    <option value="15">Show: 15</option>
+                                                    <option value="21">Show: 21</option>
+                                                    <option value="30">Show: 30</option>
+                                                  </select>
+                                                </div>
+                                                <div class="u-s-m-b-8"><select class="select-box select-box--transparent-b-2" (change)="onChange1($event) ">
+                                                        <option value="creationDate dsc" selected>Sort By: Newest Items</option>
+                                                        <option value="creationDate asc">Sort By: Latest Items</option>
+                                                        <option value="numberOfPurchase asc">Sort By: Best Selling</option>
+                                                        <option value="rating dsc">Sort By: Best Rating</option>
+                                                        <option value="productPrice asc">Sort By: Lowest Price</option>
+                                                        <option value="productPrice dsc">Sort By: Highest Price</option>
+                                                    </select></div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                              <div class="shop-p__collection">
+                                <div class="row is-grid-active">
+                                  <div class="col-lg-4 col-md-6 col-sm-6" *ngFor="let p of getCurrentPageItems(); let i = index" >
+                                    <div class="product-m" >
+                                      <div class="product-m__thumb">
+
+                                        <a class="aspect aspect--bg-grey aspect--square u-d-block" (click)="gotoDetails(p.id)">
+
+                                          <img class="aspect__img" src="../../../../assets/front-template/images/product/{{p.image}}" alt=""></a>
+                                        <div class="product-m__quick-look">
+
+                                          <a class="fas fa-search" data-modal="modal" data-modal-id="#quick-look" data-tooltip="tooltip" data-placement="top" title="Quick Look"></a></div>
+                                        <div class="product-m__add-cart">
+
+                                          <a class="btn--e-brand" data-modal="modal" data-modal-id="#add-to-cart">More Details</a></div>
+                                      </div>
+                                      <div class="product-m__content">
+                                        <div class="product-m__category">
+
+                                          <a (click)="gotoDetails(p.id)">{{p.productCategory.name}}</a></div>
+                                        <div class="product-m__name">
+
+                                          <a  (click)="gotoDetails(p.id)">{{p.name}}</a></div>
+                                        <div class="product-m__rating gl-rating-style-2"><i class="fas fa-star" *ngFor="let i of countArray(p.rating);"></i><i *ngIf="getFloor(p.rating)<p.rating" class="fas fa-star-half-alt"></i><i *ngFor="let i of countArray(5-p.rating).keys()" class="far fa-star" ></i>
+
+                                          <span class="product-m__review">({{p.numberOfRatings}})</span></div>
+                                        <div class="product-m__price">DT {{p.productPrice}}</div>
+                                        <div class="product-m__hover">
+                                          <div class="product-m__preview-description">
+
+                                            <span>{{p.description}}</span></div>
+                                          <div class="product-m__wishlist">
+
+                                            <a class="far fa-heart" href="#" data-tooltip="tooltip" data-placement="top" title="Add to Wishlist"></a></div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="pagination">
+                                  <button class="btn btn-light" [disabled]="currentPage == 1" (click)="currentPage = currentPage - 1">Prev</button>
+                                  <button class="btn btn-light" *ngFor="let page of getPageNumbers()" [disabled]="currentPage == page" (click)="currentPage = page">{{page}}</button>
+                                  <button class="btn btn-light" [disabled]="currentPage == getPageCount()" (click)="currentPage = currentPage + 1">Next</button>
+                                </div>
+                              </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--====== End - Section 1 ======-->
+        </div>
+        <!--====== End - App Content ======-->
+
+
+        <!--====== Main Footer ======-->
+        <app-footer></app-footer>
+        <!--====== Modal Section ======-->
+
+
+    </div>
+    <!--====== End - Main App ======-->
+</div>
